@@ -85,7 +85,7 @@ async def purge(ctx, user:discord.Member):
 
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
 
-    users["members"][str(user.id)]={}
+    users[str(user.id)]={}
     #users["members"][str(user.id)][]={}
     print(", ".join([str(r.id) for r in ctx.guild.roles]))
 
