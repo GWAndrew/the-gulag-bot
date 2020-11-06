@@ -6,12 +6,10 @@ import os
 import random
 import time
 import json
-from PIL import Image, ImageDraw, ImageFilter,ImageFont
 from time import sleep
 import requests
 import shutil
 from bs4 import BeautifulSoup
-from igramscraper.instagram import Instagram
 
 
 intents = discord.Intents.default()
@@ -35,6 +33,14 @@ async def on_message(ctx):
 @bot.command(pass_context=True)
 async def help(ctx):
     await ctx.send("help")
+
+
+
+
+
+
+
+
 
 
 #server admins
@@ -78,6 +84,13 @@ async def unban(ctx, id: int):
         await ctx.send(embed=embed)
 
 
+
+
+
+
+
+
+
 @bot.command(pass_context=True)
 async def purge(ctx, user:discord.Member):
     with open('users.json', 'r') as f:
@@ -85,21 +98,41 @@ async def purge(ctx, user:discord.Member):
 
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
 
-    users[str(user.id)][str(r.id) for r in ctx.guild.roles]={}
+
+    users[str(user.id)]={}
+
+    for role in user.roles:
+        removing_roles=str(role.id)
+        print(role.id)
+        removing_roles.append(role.id)
+
+
+    users[str(user.id)]=removing_roles
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
 
-    role_ids = users[str(user.id)][str(r.id) for r in ctx.guild.roles]
 
-    for role in [r for r in ctx.guild.roles if r.id in role_ids]:
-        try:
-            await role.delete()
-        except:
-            await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
+    #print(user.roles)
 
-    await ctx.author.add_roles(role)
+    #for role in user.roles:
+        #print(role.id)
+
+    #await ctx.author.remove_roles(users[str(user.id)][role.id])
+    #await ctx.author.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
