@@ -87,11 +87,20 @@ async def purge(ctx, user:discord.Member):
 
     users[str(user.id)][str(r.id) for r in ctx.guild.roles]={}
 
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
+    role_ids = users[str(user.id)][str(r.id) for r in ctx.guild.roles]
+
+    for role in [r for r in ctx.guild.roles if r.id in role_ids]:
+        try:
+            await role.delete()
+        except:
+            await ctx.send(f"Couldn't delete {role.name} ({role.id}).")
+
     await ctx.author.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
 
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
 
 
 @bot.command(pass_context=True)
