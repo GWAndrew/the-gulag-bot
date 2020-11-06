@@ -79,10 +79,15 @@ async def unban(ctx, id: int):
 
 
 @bot.command(pass_context=True)
-async def purge(ctx):
-    role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
+async def purge(ctx, * role: discord.Role):
+    with open('users.json', 'r') as f:
+            users = json.load(f)
+
     await ctx.author.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
+    
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
 
 
 token = open("token.txt", "r")
