@@ -84,7 +84,7 @@ async def purge(ctx):
     await ctx.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
 
-
+S
 
 token = open("token.txt", "r")
 
