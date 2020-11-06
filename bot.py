@@ -17,7 +17,7 @@ from igramscraper.instagram import Instagram
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
-bot = commands.Bot(command_prefix="?", intents = intents)
+bot = commands.Bot(command_prefix="A?", intents = intents)
 bot.remove_command("help")
 
 
@@ -81,7 +81,7 @@ async def unban(ctx, id: int):
 @bot.command(pass_context=True)
 async def purge(ctx):
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
-    await ctx.add_roles(role)
+    await ctx.guild.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
 
 
