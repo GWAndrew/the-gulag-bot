@@ -159,7 +159,7 @@ async def purgespam(ctx, arg1, arg2):
     m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
     str(arg2)
-    int(arg1)
+    arg1=int(arg1)
     if arg2.upper() in s:
         while arg1 != 0:
             await channel.send(f"{role.mention}")
