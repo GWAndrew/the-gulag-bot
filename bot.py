@@ -156,7 +156,7 @@ async def purgespam(ctx, arg1, arg2):
     channel=ctx.guild.get_channel(772524551292190740)
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
     s=["S","S","SECONDS","SECOND","SECOUNDS","SECOUND","SEC","SECS"]
-    m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
+    m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS", "MIN"]
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
 
     embed=discord.Embed(color=0x751900)
