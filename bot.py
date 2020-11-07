@@ -39,13 +39,7 @@ async def help(ctx):
 
 
 
-
-
-
-
-
-
-#server admins
+#server staff
 @bot.command(pass_context=True)
 async def kick(ctx, user:discord.Member, *, reason=None):
     try :
@@ -55,8 +49,7 @@ async def kick(ctx, user:discord.Member, *, reason=None):
             embed.set_footer(text="Reason : {}".format(reason))
             await ctx.send(embed=embed)
         else:
-            embed=discord.Embed(title="Kick", description="You do not have permissions to kick members", color=0x0a0a0a)
-            await ctx.send(embed=embed)
+            pass
     except :
         embed=discord.Embed(title="Kick", description="You cannot kick a staff member", color=0x0a0a0a)
         await ctx.send(embed=embed)
@@ -71,8 +64,7 @@ async def ban(ctx, user:discord.Member, *, reason=None):
             embed.set_footer(text="Reason : {}".format(reason))
             await ctx.send(embed=embed)
         else:
-            embed=discord.Embed(title="Ban", description="You do not have permissions to ban members", color=0x0a0a0a)
-            await ctx.send(embed=embed)
+            pass
     except :
         embed=discord.Embed(title="Ban", description="You cannot ban a staff member", color=0x0a0a0a)
         await ctx.send(embed=embed)
@@ -88,9 +80,8 @@ async def unban(ctx, id: int):
 
 
 
-
-
 @bot.command(pass_context=True)
+@has_permissions(kick_members=True)
 async def purge(ctx, user:discord.Member):
     with open('users.json', 'r') as f:
             users = json.load(f)
@@ -115,19 +106,14 @@ async def purge(ctx, user:discord.Member):
     with open('users.json', 'w') as f:
         json.dump(users, f)
 
-    #print(user.roles)
-    #for role in user.roles:
-        #print(role.id)
     await user.add_roles(role_to_add)
     await ctx.send("Purged :smiling_imp:")
 
 
 
 
-
-
-
 @bot.command(pass_context=True)
+@has_permissions(kick_members=True)
 async def unpurge(ctx, user:discord.Member):
     with open('users.json', 'r') as f:
             users = json.load(f)
@@ -146,7 +132,6 @@ async def unpurge(ctx, user:discord.Member):
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
-
 
 
 token = open("token.txt", "r")
