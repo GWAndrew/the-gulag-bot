@@ -153,6 +153,7 @@ async def unpurge(ctx, user:discord.Member):
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def purgespam(ctx, arg1, arg2):
+    channel=ctx.guild.get_channel(772524551292190740)
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
     s=["S","S","SECONDS","SECOND","SECOUNDS","SECOUND","SEC","SECS"]
     m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
@@ -181,7 +182,7 @@ async def purgespam(ctx, arg1, arg2):
         embed=discord.Embed(color=0x197500)
         embed.set_author(name=f"You must send in this format : A?purgespam (number) (seconds, minutes or hours)")
         embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
-        await ctx.send(embed=embed)
+        await channel.send(embed=embed)
 
 
 token = open("token.txt", "r")
