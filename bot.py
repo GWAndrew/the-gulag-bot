@@ -159,7 +159,7 @@ async def purgespam(ctx, arg1, arg2):
     m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
 
-    embed=discord.Embed(color=0x197500)
+    embed=discord.Embed(color=0x751900)
 
     str(arg2)
     arg1=int(arg1)
@@ -198,10 +198,12 @@ async def purgespam(ctx, arg1, arg2):
                 embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
                 await ctx.send(embed=embed)
 
-#embed=discord.Embed(color=0x197500)
-#embed.set_author(name=f"You must send in this format : A?purgespam (number) (seconds, minutes or hours)")
-#embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
-#await channel.send(embed=embed)
+@purgespam.error
+async def purgespam_error(ctx, error):
+    embed=discord.Embed(color=0x7571900)
+    embed.set_author(name=f"You must send in this format : A?purgespam <number> <seconds, minutes or hours>")
+    embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
+    await channel.send(embed=embed)
 
 
 token = open("token.txt", "r")
