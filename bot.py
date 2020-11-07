@@ -83,6 +83,7 @@ async def unban(ctx, id: int):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def purge(ctx, user:discord.Member):
+    username=user[:-5]
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
@@ -112,7 +113,7 @@ async def purge(ctx, user:discord.Member):
         await user.add_roles(role_to_add)
 
         embed=discord.Embed(color=0x940000)
-        embed.set_author(name=f"Purged {user} 👿💉")
+        embed.set_author(name=f"Purged {username} 👿💉")
         await ctx.send(embed=embed)
 
 
@@ -120,7 +121,8 @@ async def purge(ctx, user:discord.Member):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def unpurge(ctx, user:discord.Member):
-    if  user.guild_permissions.administrator:
+    username=user[:-5]
+    if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
         with open('users.json', 'r') as f:
@@ -137,7 +139,7 @@ async def unpurge(ctx, user:discord.Member):
 
         await user.remove_roles(role_to_remove)
         embed=discord.Embed(color=0x197500)
-        embed.set_author(name=f"Unpurged {user} 👿💉")
+        embed.set_author(name=f"Unpurged {username} 👿💉")
         await ctx.send(embed=embed)
 
         with open('users.json', 'w') as f:
