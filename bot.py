@@ -201,7 +201,7 @@ async def purgespam(ctx, arg1, arg2):
 @purgespam.error
 async def purgespam_error(ctx, error):
     if isinstance(error, commands.CommandError):
-        embed=discord.Embed(color=0x7571900)
+        embed=discord.Embed(color=0x751900)
         embed.set_author(name=f"You must send in this format : A?purgespam <number> <seconds, minutes or hours>")
         embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
         await ctx.send(embed=embed)
