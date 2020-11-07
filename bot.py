@@ -111,7 +111,7 @@ async def purge(ctx, user:discord.Member):
 
         await user.add_roles(role_to_add)
         embed=discord.Embed(color=0x940000)
-        embed.add_field(name="Purged {user} :smiling_imp:💉", inline=False)
+        embed.set_author(name=f"Purged {user} :smiling_imp:💉")
         await ctx.send(embed=embed)
 
 
@@ -137,7 +137,7 @@ async def unpurge(ctx, user:discord.Member):
 
         await user.remove_roles(role_to_remove)
         embed=discord.Embed(color=0x197500)
-        embed.add_field(name="Unpurged {user} :smiling_imp:💉", inline=False)
+        embed.set_author(name=f"Unpurged {user} :smiling_imp:💉")
         await ctx.send(embed=embed)
 
         with open('users.json', 'w') as f:
