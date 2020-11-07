@@ -81,7 +81,7 @@ async def unban(ctx, id: int):
 
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
-async def mute(ctx, user:discord.Member):
+async def mute(ctx, user:discord.Member, *, arg):
     #struser=str(user)
     #username=struser[:-5]
     if user.guild_permissions.kick_members:
@@ -113,14 +113,14 @@ async def mute(ctx, user:discord.Member):
         await user.add_roles(role_to_add)
 
         embed=discord.Embed(color=0x940000)
-        embed.set_author(name=f"Muted {user} 🔇")
+        embed.set_author(name=f"Muted {user} for {arg} 🔇")
         await ctx.send(embed=embed)
 
 
 
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
-async def unpurge(ctx, user:discord.Member):
+async def unmute(ctx, user:discord.Member):
     #struser=str(user)
     #username=struser[:-5]
     if user.guild_permissions.kick_members:
