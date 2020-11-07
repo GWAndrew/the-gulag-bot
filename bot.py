@@ -86,6 +86,9 @@ async def purge(ctx, user:discord.Member):
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
+        embed=discord.Embed(color=0x940000)
+        embed.set_author(name=f"Purged {user.mention} 👿💉")
+        await ctx.send(embed=embed)
         with open('users.json', 'r') as f:
                 users = json.load(f)
 
@@ -110,9 +113,6 @@ async def purge(ctx, user:discord.Member):
             json.dump(users, f)
 
         await user.add_roles(role_to_add)
-        embed=discord.Embed(color=0x940000)
-        embed.set_author(name=f"Purged {user.mention} 👿💉")
-        await ctx.send(embed=embed)
 
 
 
