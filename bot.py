@@ -83,7 +83,7 @@ async def unban(ctx, id: int):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def purge(ctx, user:discord.Member):
-    username=user[:-5]
+    username=str(user[:-5])
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
@@ -121,7 +121,7 @@ async def purge(ctx, user:discord.Member):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def unpurge(ctx, user:discord.Member):
-    username=user[:-5]
+    username=str(user[:-5])
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
