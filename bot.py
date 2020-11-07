@@ -110,7 +110,9 @@ async def purge(ctx, user:discord.Member):
             json.dump(users, f)
 
         await user.add_roles(role_to_add)
-        await ctx.send("Purged :smiling_imp:")
+        embed=discord.Embed(color=0x940000)
+        embed.add_field(name="Purged {user} :smiling_imp:💉", inline=False)
+        await ctx.send(embed=embed)
 
 
 
@@ -134,7 +136,9 @@ async def unpurge(ctx, user:discord.Member):
         role_to_remove = discord.utils.get(ctx.guild.roles, name="💉 Purged")
 
         await user.remove_roles(role_to_remove)
-        await ctx.send("Unpurged :smiling_imp:")
+        embed=discord.Embed(color=0x197500)
+        embed.add_field(name="Unpurged {user} :smiling_imp:💉", inline=False)
+        await ctx.send(embed=embed)
 
         with open('users.json', 'w') as f:
             json.dump(users, f)
