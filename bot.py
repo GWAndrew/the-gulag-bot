@@ -118,7 +118,8 @@ async def mute(ctx, user:discord.Member, *, arg):
 
 
 @mute.error
-async def purgespam_error(ctx, error, user:discord.Member):
+@has_permissions(kick_members=True)
+async def mute_error(ctx, error, user:discord.Member):
     if isinstance(error, commands.errors.MissingRequiredArgument):
         #struser=str(user)
         #username=struser[:-5]
