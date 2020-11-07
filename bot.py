@@ -132,9 +132,16 @@ async def unpurge(ctx, user:discord.Member):
     with open('users.json', 'r') as f:
             users = json.load(f)
 
-    role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
+    for role in users[str(user.id)]:
+        role_id = int(role)
+        role_name = discord.utils.get(ctx.guild.roles, id=role_id)
+        role_to_add = discord.utils.get(ctx.guild.roles, name=f"{role_name}")
+        await user.add_roles(role_to_add)
+        print(role_to_add)
 
-    await ctx.author.remove_roles(role)
+    role_to_remove = discord.utils.get(ctx.guild.roles, name="💉 Purged")
+
+    await ctx.author.remove_roles(role_to_remove)
     await ctx.send("Unpurged :smiling_imp:")
 
     with open('users.json', 'w') as f:
