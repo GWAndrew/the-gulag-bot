@@ -83,7 +83,7 @@ async def unban(ctx, id: int):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def purge(ctx, user:discord.Member):
-    if user.server_permissions.administrator:
+    if user.guild_permissions.administrator:
         with open('users.json', 'r') as f:
                 users = json.load(f)
 
@@ -118,7 +118,7 @@ async def purge(ctx, user:discord.Member):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def unpurge(ctx, user:discord.Member):
-    if user.server_permissions.administrator:
+    if user.guild_permissions.administrator:
         with open('users.json', 'r') as f:
                 users = json.load(f)
 
