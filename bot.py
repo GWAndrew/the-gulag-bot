@@ -119,7 +119,7 @@ async def mute(ctx, user:discord.Member, *, arg):
 
 @mute.error
 @has_permissions(kick_members=True)
-async def mute_error(ctx, user:discord.Member, error):
+async def mute_error(ctx, error):
     if isinstance(error, commands.errors.MissingRequiredArgument):
         #struser=str(user)
         #username=struser[:-5]
