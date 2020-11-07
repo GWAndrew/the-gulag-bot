@@ -112,9 +112,8 @@ async def purge(ctx, user:discord.Member):
         await user.add_roles(role_to_add)
 
         embed=discord.Embed(color=0x940000)
-        embed.set_author(name=f"Purged {user.id} 👿💉")
+        embed.set_author(name=f"Purged {user} 👿💉")
         await ctx.send(embed=embed)
-
 
 
 
