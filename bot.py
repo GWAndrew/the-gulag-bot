@@ -158,25 +158,45 @@ async def purgespam(ctx, arg1, arg2):
     s=["S","S","SECONDS","SECOND","SECOUNDS","SECOUND","SEC","SECS"]
     m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
+
+    embed=discord.Embed(color=0x197500)
+
     str(arg2)
     arg1=int(arg1)
     if arg2.upper() in s:
+        embed.set_author(name=f"Summoning started for {arg1} seconds {ctx.author.mention} 👿")
+        await ctx.send(embed=embed)
         while arg1 != 0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
+            if arg1==1:
+                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                await ctx.send(embed=embed)
+
     if arg2.upper() in m:
+        embed.set_author(name=f"Summoning started for {arg1} minutes {ctx.author.mention} 👿")
+        await ctx.send(embed=embed)
         arg1=arg1*60
         while arg1 !=0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
+            if arg1==1:
+                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                await ctx.send(embed=embed)
+
     if arg2.upper() in h:
+        embed.set_author(name=f"Summoning started for {arg1} hours {ctx.author.mention} 👿")
+        await ctx.send(embed=embed)
         arg1=arg1*3600
         while arg1 !=0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
+            if arg1==1:
+                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                await ctx.send(embed=embed)
 
 #embed=discord.Embed(color=0x197500)
 #embed.set_author(name=f"You must send in this format : A?purgespam (number) (seconds, minutes or hours)")
