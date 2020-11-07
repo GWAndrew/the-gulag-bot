@@ -160,18 +160,18 @@ async def purgespam(ctx, arg1, arg2):
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
     str(arg2)
     int(arg1)
-    if arg2 in s.upper():
+    if arg2.upper() in s:
         while arg1 != 0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
-    if arg2 in m.upper():
+    if arg2.upper() in m:
         arg1=arg1*60
         while arg1 !=0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
-    if arg2 in h.upper():
+    if arg2.upper() in h:
         arg1=arg1*3600
         while arg1 !=0:
             await channel.send(f"{role.mention}")
