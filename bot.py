@@ -83,7 +83,7 @@ async def unban(ctx, id: int):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def purge(ctx, user:discord.Member):
-    try:
+    if user.server_permissions.administrator:
         with open('users.json', 'r') as f:
                 users = json.load(f)
 
@@ -109,7 +109,7 @@ async def purge(ctx, user:discord.Member):
 
         await user.add_roles(role_to_add)
         await ctx.send("Purged :smiling_imp:")
-    except:
+    else:
         await ctx.send("You cannot purge a staff member :pensive:")
 
 
@@ -118,7 +118,7 @@ async def purge(ctx, user:discord.Member):
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
 async def unpurge(ctx, user:discord.Member):
-    try:
+    if user.server_permissions.administrator:
         with open('users.json', 'r') as f:
                 users = json.load(f)
 
@@ -136,7 +136,7 @@ async def unpurge(ctx, user:discord.Member):
 
         with open('users.json', 'w') as f:
             json.dump(users, f)
-    except:
+    else:
         await ctx.send("You cannot unpurge a staff member :pensive:")
 
 
