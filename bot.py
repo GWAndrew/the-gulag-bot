@@ -10,6 +10,8 @@ from time import sleep
 import requests
 import shutil
 from bs4 import BeautifulSoup
+from discord.utils import get
+
 
 
 intents = discord.Intents.default()
@@ -88,9 +90,6 @@ async def unban(ctx, id: int):
 
 
 
-
-
-
 @bot.command(pass_context=True)
 async def purge(ctx, user:discord.Member):
     with open('users.json', 'r') as f:
@@ -98,37 +97,30 @@ async def purge(ctx, user:discord.Member):
 
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
 
-
+    a=0
     users[str(user.id)]={}
-
+    removing_roles=[]
     for role in user.roles:
-        removing_roles=str(role.id)
-        print(role.id)
-        removing_roles.append(role.id)
-
+        if a==0:
+            a=1
+        else:
+            removing_roles.append(f"{role.id}")
+            role_id = int(role.id)
+            role_name = discord.utils.get(ctx.guild.roles, id=role_id)
+            role_to_remove = discord.utils.get(ctx.guild.roles, name=f"{role_name}")
+            await ctx.author.remove_roles(role_to_remove)
+            print(role_to_remove)
 
     users[str(user.id)]=removing_roles
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
 
-
     #print(user.roles)
-
     #for role in user.roles:
         #print(role.id)
-
-    #await ctx.author.remove_roles(users[str(user.id)][role.id])
-    #await ctx.author.add_roles(role)
+    await ctx.author.add_roles(role)
     await ctx.send("Purged :smiling_imp:")
-
-
-
-
-
-
-
-
 
 
 
