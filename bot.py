@@ -79,6 +79,74 @@ async def unban(ctx, id: int):
 
 
 
+@bot.command(pass_context=True)
+@has_permissions(kick_members=True)
+async def mute(ctx, user:discord.Member):
+    #struser=str(user)
+    #username=struser[:-5]
+    if user.guild_permissions.kick_members:
+        await ctx.send("You cannot mute a staff member :pensive:")
+    else:
+        with open('users.json', 'r') as f:
+                users = json.load(f)
+
+        role_to_add = discord.utils.get(ctx.guild.roles, name="Muted")
+        a=0
+        users[str(user.id)]={}
+        removing_roles=[]
+        for role in user.roles:
+            if a==0:
+                a=1
+            else:
+                removing_roles.append(f"{role.id}")
+                role_id = int(role.id)
+                role_name = discord.utils.get(ctx.guild.roles, id=role_id)
+                role_to_remove = discord.utils.get(ctx.guild.roles, name=f"{role_name}")
+                await user.remove_roles(role_to_remove)
+                print(role_to_remove)
+
+        users[str(user.id)]=removing_roles
+
+        with open('users.json', 'w') as f:
+            json.dump(users, f)
+
+        await user.add_roles(role_to_add)
+
+        embed=discord.Embed(color=0x940000)
+        embed.set_author(name=f"Muted {user} 🔇")
+        await ctx.send(embed=embed)
+
+
+
+@bot.command(pass_context=True)
+@has_permissions(kick_members=True)
+async def unpurge(ctx, user:discord.Member):
+    #struser=str(user)
+    #username=struser[:-5]
+    if user.guild_permissions.kick_members:
+        await ctx.send("You cannot unmute a staff member :pensive:")
+    else:
+        with open('users.json', 'r') as f:
+                users = json.load(f)
+
+        for role in users[str(user.id)]:
+            role_id = int(role)
+            role_name = discord.utils.get(ctx.guild.roles, id=role_id)
+            role_to_add = discord.utils.get(ctx.guild.roles, name=f"{role_name}")
+            await user.add_roles(role_to_add)
+            print(role_to_add)
+
+        role_to_remove = discord.utils.get(ctx.guild.roles, name="Muted")
+
+        await user.remove_roles(role_to_remove)
+        embed=discord.Embed(color=0x197500)
+        embed.set_author(name=f"Unmuted {user} 🔊")
+        await ctx.send(embed=embed)
+
+        with open('users.json', 'w') as f:
+            json.dump(users, f)
+
+
 
 @bot.command(pass_context=True)
 @has_permissions(kick_members=True)
