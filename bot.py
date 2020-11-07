@@ -131,7 +131,7 @@ async def unpurge(ctx, user:discord.Member):
 
         role_to_remove = discord.utils.get(ctx.guild.roles, name="💉 Purged")
 
-        await ctx.author.remove_roles(role_to_remove)
+        await user.remove_roles(role_to_remove)
         await ctx.send("Unpurged :smiling_imp:")
 
         with open('users.json', 'w') as f:
