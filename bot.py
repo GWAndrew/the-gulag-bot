@@ -158,31 +158,30 @@ async def purgespam(ctx, arg1, arg2):
     s=["S","S","SECONDS","SECOND","SECOUNDS","SECOUND","SEC","SECS"]
     m=["M","M","MINUTES","MINUTE","MINS","MINS","MINUT","MINUTS"]
     h=["H","HS","HRS","HR","HOUR","HOURS","HOR","HORS","HUR","HURS"]
-    try :
-        int(arg1)
-        str(arg2)
-        if arg2 in s:
-            while arg1 != 0:
-                await channel.send(f"{role.mention}")
-                await asyncio.sleep(1)
-                arg1=arg1-1
-        if arg2 in m:
-            arg1=arg1*60
-            while arg1 !=0:
-                await channel.send(f"{role.mention}")
-                await asyncio.sleep(1)
-                arg1=arg1-1
-        if arg2 in h:
-            arg1=arg1*3600
-            while arg1 !=0:
-                await channel.send(f"{role.mention}")
-                await asyncio.sleep(1)
-                arg1=arg1-1
-    except:
-        embed=discord.Embed(color=0x197500)
-        embed.set_author(name=f"You must send in this format : A?purgespam (number) (seconds, minutes or hours)")
-        embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
-        await channel.send(embed=embed)
+    str(arg2)
+    int(arg1)
+    if arg2 in s:
+        while arg1 != 0:
+            await channel.send(f"{role.mention}")
+            await asyncio.sleep(1)
+            arg1=arg1-1
+    if arg2 in m:
+        arg1=arg1*60
+        while arg1 !=0:
+            await channel.send(f"{role.mention}")
+            await asyncio.sleep(1)
+            arg1=arg1-1
+    if arg2 in h:
+        arg1=arg1*3600
+        while arg1 !=0:
+            await channel.send(f"{role.mention}")
+            await asyncio.sleep(1)
+            arg1=arg1-1
+
+#embed=discord.Embed(color=0x197500)
+#embed.set_author(name=f"You must send in this format : A?purgespam (number) (seconds, minutes or hours)")
+#embed.set_footer(text="Example : A?purgespam 50 seconds | Permissions needed : Administrator")
+#await channel.send(embed=embed)
 
 
 token = open("token.txt", "r")
