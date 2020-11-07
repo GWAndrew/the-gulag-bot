@@ -164,18 +164,18 @@ async def purgespam(ctx, arg1, arg2):
     str(arg2)
     arg1=int(arg1)
     if arg2.upper() in s:
-        embed.set_author(name=f"Summoning started for {arg1} seconds {ctx.author.mention} 👿")
+        embed.set_author(name=f"Summoning started for {arg1} seconds 👿")
         await ctx.send(embed=embed)
         while arg1 != 0:
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
             if arg1==1:
-                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
     if arg2.upper() in m:
-        embed.set_author(name=f"Summoning started for {arg1} minutes {ctx.author.mention} 👿")
+        embed.set_author(name=f"Summoning started for {arg1} minutes 👿")
         await ctx.send(embed=embed)
         arg1=arg1*60
         while arg1 !=0:
@@ -183,11 +183,11 @@ async def purgespam(ctx, arg1, arg2):
             await asyncio.sleep(1)
             arg1=arg1-1
             if arg1==1:
-                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
     if arg2.upper() in h:
-        embed.set_author(name=f"Summoning started for {arg1} hours {ctx.author.mention} 👿")
+        embed.set_author(name=f"Summoning started for {arg1} hours 👿")
         await ctx.send(embed=embed)
         arg1=arg1*3600
         while arg1 !=0:
@@ -195,7 +195,7 @@ async def purgespam(ctx, arg1, arg2):
             await asyncio.sleep(1)
             arg1=arg1-1
             if arg1==1:
-                embed.set_author(name=f"Summoning has finished {ctx.author.mention} 🩸")
+                embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
 @purgespam.error
