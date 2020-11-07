@@ -170,7 +170,7 @@ async def purgespam(ctx, arg1, arg2):
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
-            if arg1==1:
+            if arg1==0:
                 embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
@@ -182,7 +182,7 @@ async def purgespam(ctx, arg1, arg2):
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
-            if arg1==1:
+            if arg1==0:
                 embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
@@ -194,7 +194,7 @@ async def purgespam(ctx, arg1, arg2):
             await channel.send(f"{role.mention}")
             await asyncio.sleep(1)
             arg1=arg1-1
-            if arg1==1:
+            if arg1==0:
                 embed.set_author(name=f"Summoning has finished 🩸")
                 await ctx.send(embed=embed)
 
