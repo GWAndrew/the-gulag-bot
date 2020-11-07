@@ -151,7 +151,7 @@ async def unpurge(ctx, user:discord.Member):
 
 
 @bot.command(pass_context=True)
-@has_permissions(admin=True)
+@has_permissions(administrator=True)
 async def purgespam(ctx, arg1, arg2):
     role = discord.utils.get(ctx.guild.roles, name="💉 Purged")
     s=["S","S","SECONDS","SECOND","SECOUNDS","SECOUND","SEC","SECS"]
