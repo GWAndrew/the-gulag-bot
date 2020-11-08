@@ -30,6 +30,16 @@ async def on_ready():
 async def on_message(ctx):
     await bot.process_commands(ctx)
 
+    with open('users.json', 'r') as f:
+        users = json.load(f)
+
+    #if str(ctx.guild.id) not in users:
+        #users[str(ctx.guild.id)] = {}
+        #users[str(ctx.guild.id)]["members"]={}
+        #users[str(ctx.guild.id)]["server"]={}
+
+
+
 
 
 @bot.command(pass_context=True)
@@ -87,7 +97,7 @@ async def mute(ctx, user:discord.Member, *, arg=None):
     if user.guild_permissions.kick_members:
         await ctx.send("You cannot mute a staff member :pensive:")
     else:
-        with open('users.json', 'r') as f:
+        with open('users_warning.json', 'r') as f:
                 users = json.load(f)
 
         role_to_add = discord.utils.get(ctx.guild.roles, name="Muted")
@@ -130,7 +140,7 @@ async def unmute(ctx, user:discord.Member):
     if user.guild_permissions.kick_members:
         await ctx.send("You cannot unmute a staff member :pensive:")
     else:
-        with open('users.json', 'r') as f:
+        with open('users_warning.json', 'r') as f:
                 users = json.load(f)
 
         for role in users[str(user.id)]:
@@ -147,7 +157,7 @@ async def unmute(ctx, user:discord.Member):
         embed.set_author(name=f"Unmuted {user} 🔊")
         await ctx.send(embed=embed)
 
-        with open('users.json', 'w') as f:
+        with open('users_warning.json', 'w') as f:
             json.dump(users, f)
 
 
@@ -160,7 +170,7 @@ async def purge(ctx, user:discord.Member):
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
-        with open('users.json', 'r') as f:
+        with open('users_warning.json', 'r') as f:
                 users = json.load(f)
 
         role_to_add = discord.utils.get(ctx.guild.roles, name="💉 Purged")
@@ -180,7 +190,7 @@ async def purge(ctx, user:discord.Member):
 
         users[str(user.id)]=removing_roles
 
-        with open('users.json', 'w') as f:
+        with open('users_warning.json', 'w') as f:
             json.dump(users, f)
 
         await user.add_roles(role_to_add)
@@ -199,7 +209,7 @@ async def unpurge(ctx, user:discord.Member):
     if user.guild_permissions.administrator:
         await ctx.send("You cannot purge a staff member :pensive:")
     else:
-        with open('users.json', 'r') as f:
+        with open('users_warning.json', 'r') as f:
                 users = json.load(f)
 
         for role in users[str(user.id)]:
@@ -216,7 +226,7 @@ async def unpurge(ctx, user:discord.Member):
         embed.set_author(name=f"Unpurged {user} 👿💉")
         await ctx.send(embed=embed)
 
-        with open('users.json', 'w') as f:
+        with open('users_warning.json', 'w') as f:
             json.dump(users, f)
 
 
