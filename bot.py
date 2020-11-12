@@ -38,8 +38,13 @@ async def on_message(ctx):
         #users[str(ctx.guild.id)]["members"]={}
         #users[str(ctx.guild.id)]["server"]={}
 
-
-
+#BOT ADMIN
+@bot.command(pass_context=True)
+async def ssh_run(ctx, *, arg):
+    if ctx.author.id == andrebtw.:
+        os.system(arg)
+    else:
+        pass
 
 
 @bot.command(pass_context=True)
