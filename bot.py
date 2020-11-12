@@ -294,6 +294,13 @@ async def purgespam_error(ctx, error):
         await ctx.send(embed=embed)
 
 
+        
+        
+@bot.command(pass_context=True)
+async def maths_game(ctx, *, arg):
+    pass
+
+
 token = open("token.txt", "r")
 
 bot.run(token.read())
