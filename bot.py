@@ -312,10 +312,11 @@ async def color(ctx, arg):
 
     arg=arg.lower()
     color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
-    embed=discord.Embed(color=color.color)
+    #embed=discord.Embed(color=color.color)
     embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
     await user.add_roles(color)
     await ctx.send(embed=embed)
+    print(color.color)
 
 
 
