@@ -315,7 +315,7 @@ async def color(ctx, arg):
     #embed=discord.Embed(color=color.color)
     embed=discord.Embed()
     embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
-    await user.add_roles(color)
+    await ctx.author.add_roles(color)
     await ctx.send(embed=embed)
     print(color.color)
 
