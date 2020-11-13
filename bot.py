@@ -307,6 +307,7 @@ async def purgespam_error(ctx, error):
 @bot.command(pass_context=True)
 async def color(ctx, arg):
     arg=arg.lower()
+    colors=["Red","Green","Blue","Pink","Purple","Yellow","Orange","Cyan"]
 
 
     if arg==help:
