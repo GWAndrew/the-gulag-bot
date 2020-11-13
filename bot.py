@@ -315,19 +315,18 @@ async def color(ctx, arg):
         pass
 
     if arg.capitalize() in colors:
-        for role in ctx.guild.roles:
-            if arg.capitalize() in role:
-                color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
-                embed=discord.Embed(color=color.color)
-                embed.set_author(name=f"{arg.upper()} IS REMOVED")
-                await ctx.author.remove_roles(color)
-                await ctx.send(embed=embed)
-            else:
-                color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
-                embed=discord.Embed(color=color.color)
-                embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
-                await ctx.author.add_roles(color)
-                await ctx.send(embed=embed)
+        if arg.capitalise() in [y.name.capitalise() for y in ctx.author.roles]:
+            color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
+            embed=discord.Embed(color=color.color)
+            embed.set_author(name=f"{arg.upper()} IS REMOVED")
+            await ctx.author.remove_roles(color)
+            await ctx.send(embed=embed)
+        else:
+            color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
+            embed=discord.Embed(color=color.color)
+            embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
+            await ctx.author.add_roles(color)
+            await ctx.send(embed=embed)
     else:
         embed=discord.Embed(color=0xfffffe)
         embed.set_author(name=f"WE DO NOT HAVE YOUR COLOR 😔")
