@@ -55,8 +55,10 @@ async def ssh_run(ctx, *, arg):
 @bot.command(pass_context=True)
 async def update(ctx):
     if ctx.author.id == 336180549192515585:
+        embed=discord.Embed(color=0xfffffe)
+        embed.set_author(name=f"UPDATING...")
+        await ctx.send(embed=embed)
         os.system("python3 update.py")
-        await ctx.send("bot code updated")
     else:
         print("NOT ANDRE TRIED SSH RUN")
         pass
