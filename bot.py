@@ -20,6 +20,10 @@ intents.presences = True
 bot = commands.Bot(command_prefix="A?", intents = intents)
 bot.remove_command("help")
 
+#colors
+
+
+
 
 @bot.event
 async def on_ready():
@@ -300,11 +304,32 @@ async def purgespam_error(ctx, error):
         await ctx.send(embed=embed)
 
 
+@bot.command(pass_context=True)
+async def color(ctx, arg):
+
+    if arg==help:
+        pass
+
+    arg=arg.lower()
+    color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
+    embed=discord.Embed(color=color.color)
+    embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
+    await user.add_roles(color)
+    await ctx.send(embed=embed)
+
+
+
+
+
 
 
 @bot.command(pass_context=True)
 async def maths_game(ctx, *, arg):
     pass
+
+
+
+
 
 
 token = open("token.txt", "r")
