@@ -47,7 +47,7 @@ async def on_message(ctx):
 async def ssh_run(ctx, *, arg):
     if ctx.author.id == 336180549192515585:
         os.system(arg)
-        await ctx.send(f"os.system(arg)")
+        await ctx.send(f"{os.system(arg)}")
     else:
         print("NOOB")
         pass
