@@ -313,7 +313,7 @@ async def color(ctx, arg):
     if arg==help:
         pass
 
-    if arg in colors:
+    if arg.capitalize() in colors:
         for role in ctx.guild.roles:
             if arg.capitalize() in role:
                 color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
