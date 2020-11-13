@@ -306,18 +306,25 @@ async def purgespam_error(ctx, error):
 
 @bot.command(pass_context=True)
 async def color(ctx, arg):
+    arg=arg.lower()
+
 
     if arg==help:
         pass
 
-    arg=arg.lower()
-    color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
-    #embed=discord.Embed(color=color.color)
-    embed=discord.Embed()
-    embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
-    await ctx.author.add_roles(color)
-    await ctx.send(embed=embed)
-    print(color.color)
+    for role in ctx.guild.roles:
+        if arg.capitalize() in role:
+            color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
+            embed=discord.Embed(color=color.color)
+            embed.set_author(name=f"{arg.upper()} IS REMOVED")
+            await ctx.author.remove_roles(color)
+            await ctx.send(embed=embed)
+        else:
+            color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
+            embed=discord.Embed(color=color.color)
+            embed.set_author(name=f"YOU ARE NOW {arg.upper()}")
+            await ctx.author.add_roles(color)
+            await ctx.send(embed=embed)
 
 
 
