@@ -41,9 +41,10 @@ async def on_message(ctx):
 #BOT ADMIN
 @bot.command(pass_context=True)
 async def ssh_run(ctx, *, arg):
-    if ctx.author.id == andrebtw.:
+    if ctx.author.id == 336180549192515585:
         os.system(arg)
     else:
+        print("NOOB")
         pass
 
 
@@ -299,8 +300,8 @@ async def purgespam_error(ctx, error):
         await ctx.send(embed=embed)
 
 
-        
-        
+
+
 @bot.command(pass_context=True)
 async def maths_game(ctx, *, arg):
     pass
