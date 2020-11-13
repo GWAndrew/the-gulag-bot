@@ -328,7 +328,7 @@ async def color(ctx, arg):
                 await ctx.author.add_roles(color)
                 await ctx.send(embed=embed)
     else:
-        embed=discord.Embed(color=0xffffff)
+        embed=discord.Embed(color=0xfffffe)
         embed.set_author(name=f"WE DO NOT HAVE YOUR COLOR 😔")
         await ctx.send(embed=embed)
 
