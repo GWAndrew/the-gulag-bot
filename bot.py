@@ -52,6 +52,15 @@ async def ssh_run(ctx, *, arg):
         print("NOT ANDRE TRIED SSH RUN")
         pass
 
+@bot.command(pass_context=True)
+async def update(ctx):
+    if ctx.author.id == 336180549192515585:
+        os.system("python3 update.py")
+        await ctx.send("bot code updated")
+    else:
+        print("NOT ANDRE TRIED SSH RUN")
+        pass
+
 
 @bot.command(pass_context=True)
 async def help(ctx):
