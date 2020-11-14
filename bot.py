@@ -331,7 +331,7 @@ async def color(ctx, arg):
             embed.set_author(name=f"{arg.upper()} IS REMOVED")
             await ctx.author.remove_roles(color)
             await ctx.send(embed=embed)
-        elif [y.name.capitalize() for y in ctx.author.roles] in colors:
+        elif [y.name.capitalize() for y in ctx.author.roles] in [y.name for y in colors]:
             print(1)
             for x in ctx.author.roles:
                 print(2)
