@@ -345,12 +345,12 @@ async def color(ctx, arg):
     for y in ctx.author.roles:
         print(y)
         print(1)
-        if y in colors:
+        if str(y) in colors:
             print(3)
-            str(x)
-            color_to_remove = discord.utils.get(ctx.guild.roles, name=f"{x}")
+            str(y)
+            color_to_remove = discord.utils.get(ctx.guild.roles, name=f"{y}")
             await ctx.author.remove_roles(color_to_remove)
-            embed.set_author(name=f"{x} IS REMOVED")
+            embed.set_author(name=f"{y} IS REMOVED")
 
 
 
