@@ -321,7 +321,6 @@ async def color(ctx, arg):
     arg=arg.lower()
     colors=["Red","Green","Blue","Pink","Purple","Yellow","Orange","Cyan"]
 
-
     if arg==help:
         pass
 
@@ -332,7 +331,7 @@ async def color(ctx, arg):
             embed.set_author(name=f"{arg.upper()} IS REMOVED")
             await ctx.author.remove_roles(color)
             await ctx.send(embed=embed)
-        elif colors in [y.name.capitalize() for y in ctx.author.roles]:
+        elif [y.name.capitalize() for y in ctx.author.roles] in colors:
             for x in ctx.author.roles:
                 if x in colors:
                     str(x)
