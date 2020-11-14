@@ -343,6 +343,7 @@ async def color(ctx, arg):
         await ctx.send(embed=embed)
 
     for y in ctx.author.roles:
+        print(y)
         print(1)
         if y in colors:
             print(3)
