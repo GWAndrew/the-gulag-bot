@@ -326,7 +326,7 @@ async def color(ctx, arg):
         pass
 
     if arg.capitalize() in colors:
-        if arg.capitalise() in [y.name for y in ctx.author.roles]:
+        if arg.capitalize() in [y.name.capitalize() for y in ctx.author.roles]:
             color = discord.utils.get(ctx.guild.roles, name=f"{arg.capitalize()}")
             embed=discord.Embed(color=color.color)
             embed.set_author(name=f"{arg.upper()} IS REMOVED")
