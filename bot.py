@@ -370,9 +370,3 @@ async def maths_game(ctx, *, arg):
 token = open("token.txt", "r")
 
 bot.run(token.read())
-
-
-
-#SIKEEEEEE
-
-#SIKEEEE 2
