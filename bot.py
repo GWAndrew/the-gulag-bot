@@ -355,16 +355,18 @@ async def color(ctx, arg):
 
 
 
-
-
-
 @bot.command(pass_context=True)
 async def maths_game(ctx, *, arg):
     pass
 
 
 
-
+@bot.command(pass_context)
+async def nsfw(ctx,*,arg):
+    if str(arg)=="gay":
+        embed=discord.Embed(color=0x000001)
+        embed.set_author(name=f"NO GAY PORN ALLOWED HERE ! :vomit:")
+        await ctx.send(embed=embed)
 
 
 token = open("token.txt", "r")
